@@ -8,7 +8,7 @@ app.use(express.json());
 const products = [];
 
 app.get("/", (req, res) => {
-  res.send("2 Paskaita 2 Uzduotis");
+  res.send("2 Paskaita 2-3 Uzduotys");
 });
 
 app.get("/products", (req, res) => {
