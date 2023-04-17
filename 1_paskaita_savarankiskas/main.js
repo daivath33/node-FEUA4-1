@@ -2,7 +2,7 @@ const express = require("express");
 const casual = require("casual");
 
 const app = express();
-console.log(casual.postCode);
+
 app.get("/", (req, res) => {
   res.send("Savarankiskas Darbas");
 });
@@ -15,7 +15,7 @@ app.get("/randomUser", (req, res) => {
     country: casual.country,
     city: casual.city,
     address: casual.address,
-    postCode: casual.postCode,
+    zip: casual.zip((digits = {})),
   };
   res.send(user);
 });
@@ -23,12 +23,12 @@ app.get("/randomUser", (req, res) => {
 //2 routas
 app.get("/randomColor", (req, res) => {
   const randomColor = casual.color_name;
-  res.send(randomColor);
+  res.send(`Random Color: ${randomColor}`);
 });
 
 //3 routas
 app.get("/randomColors", (req, res) => {
-  let colors = [];
+  const colors = [];
   for (i = 0; i < 5; i++) {
     colors.push(casual.color_name);
   }
@@ -39,12 +39,12 @@ const port = 3000;
 //4 routas
 app.get("/randomPlaces", (req, res) => {
   let index = casual.integer((from = 1), (to = 5));
-  let places = [];
+  const places = [];
   for (let i = 0; i < index; i++) {
     const placeObj = {
       country: casual.country,
       city: casual.city,
-      address: casual.address,
+      address: `${casual.street} ${casual.address2}`,
     };
     places.push(placeObj);
   }
