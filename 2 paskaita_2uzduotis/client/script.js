@@ -10,9 +10,11 @@ form.addEventListener("submit", (e) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ product: prodInput, price: priceInput }),
-  }).then(() => {
-    location.reload();
-  });
+  })
+    .then(() => {
+      location.reload();
+    })
+    .catch((error) => console.log(error));
   form.reset();
 });
 
@@ -26,4 +28,5 @@ fetch("http://localhost:3000/products")
       li.textContent = `${el.product} ${el.price} Eur`;
       products.append(li);
     });
-  });
+  })
+  .catch((error) => console.log(error));
