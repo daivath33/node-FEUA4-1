@@ -7,15 +7,27 @@ app.use(cors());
 
 const users = [];
 
-app.get("/", (req, res) => {
-  res.send("3 Paskaita: Uzduotis: Registruoti vartotoja");
-});
-
 app.get("/users", (req, res) => {
   res.send(users);
 });
 
-app.post("/registerUser", (req, res) => {
+app.post("/login", (req, res) => {
+  let foundedUser = users.find((user) => user.email === req.body.email);
+  if (foundedUser !== undefined) {
+    let submittedPassword = req.body.password;
+    let storedPassword = foundedUser.password;
+    if (submittedPassword === storedPassword) {
+      res.send({ message: `Sekmingai prisijugete`, approved: true });
+    }
+  } else {
+    res.send({
+      message: `Neteisingas slaptazodis arba el. pastas`,
+      approved: false,
+    });
+  }
+});
+
+app.post("/register", (req, res) => {
   const user = {
     password: req.body.password,
     email: req.body.email,
@@ -28,7 +40,8 @@ app.post("/registerUser", (req, res) => {
     isAgreemnet: req.body.isAgreemnet,
   };
   users.push(user);
-  res.send(users);
+  res.send();
 });
+
 const port = 5000;
 app.listen(port, () => console.log(`Server started on port ${port}...`));

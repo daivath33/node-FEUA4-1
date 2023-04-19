@@ -4,18 +4,12 @@ fetch("http://localhost:5000/users")
     console.log(data);
     data.forEach((user) => {
       const tbody = document.querySelector("tbody");
-      const userHTML = `
-      <tr>
-      <td id="password">${user.password}</td>
-      <td id="email">${user.email}</td>
-      <td id="firstname">${user.firstname}</td>
-      <td id="surname">${user.surname}</td>
-      <td id="address">${user.address}</td>
-      <td id="postcode">${user.postcode}</td>
-      <td id="city">${user.city}</td>
-      <td id="phone">${user.phone}</td>
-      <td id="agreemnet">${user.isAgreemnet}</td>
-    </tr>`;
-      tbody.insertAdjacentHTML("afterend", userHTML);
+      const trow = document.createElement("tr");
+      Object.values(user).forEach((value) => {
+        const td = document.createElement("td");
+        td.textContent = value;
+        trow.append(td);
+      });
+      tbody.append(trow);
     });
   });
