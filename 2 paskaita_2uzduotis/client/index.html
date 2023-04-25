@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2 Paskaita 2 Uzduotis</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        min-height: 100vh;
+        background-color: rgb(157, 248, 218);
+        padding: 50px;
+        font-family: sans-serif;
+      }
+      form {
+        margin-bottom: 50px;
+      }
+      input {
+        border: 2px solid darkslategrey;
+        outline: none;
+        border-radius: 5px;
+        padding: 12px 10px;
+        width: 300px;
+      }
+      input,
+      button {
+        font-family: sans-serif;
+        font-size: 18px;
+        margin-right: 20px;
+        cursor: pointer;
+      }
+      button {
+        background-color: darkslategrey;
+        color: #fff;
+        border: none;
+        padding: 15px 30px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 30px;
+        transition: all 0.3s ease-in;
+      }
+      button:hover {
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  </head>
+  <body>
+    <form action="">
+      <input type="text" name="product" id="prod" placeholder="Irasykite produkto pavadinima"/>
+      <input type="text" name="price" id="price" placeholder="Irasykite produkto kaina">
+      <button class="btn">Prideti Produkta</button>
+    </form>
+    <ul class="output"></ul>
+    <script src="script.js"></script>
+  </body>
+</html>
